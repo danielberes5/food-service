@@ -37,11 +37,11 @@ notFoundMessage="The cart is empty!" resetLinkText="Go to Homepage">
 
   <div class="checkout">
     <div>
-      <div class="food-counts">
+      <div class="foods-count">
         {{cart.items.length}}
       </div>
       <div class="total-price">
-        {{cart.totalPrice}}
+        {{cart.totalPrice|currency}}
       </div>
     </div>
   </div>
