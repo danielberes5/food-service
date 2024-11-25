@@ -6,22 +6,19 @@ notFoundMessage="Product not found!" resetLinkText="Back to Homepage">
   <div class="details">
     <div class="header">
       <span class="name">
-        {{food.name}}}
+        {{food.name}}
       </span>
       <span class="favorite {{food.favorite?'':'not'}}">
         ❤
       </span>
     </div>
     <div class="rating">
-      <star-rating
-        [value]="5"
-        [totalstars]="5"
-        checkedcolor="red"
-        uncheckedcolor="black"
-        size="30px"
-        [readonly]="true"
-      >
-      </star-rating>
+      <ngb-rating [(rate)]="food.stars" [max]="5" [readonly]="true" [starTemplate]="t" class="custom-star-rating">
+      </ngb-rating>
+
+      <ng-template #t let-fill="fill">
+        <span class="star" [style.color]="fill === 100 ? 'red' : 'black'" [style.fontSize]="'18px'">&#9733;</span>
+      </ng-template>
     </div>
     <div class="origins">
             <span *ngFor="let origin of food.origins">
@@ -29,7 +26,7 @@ notFoundMessage="Product not found!" resetLinkText="Back to Homepage">
             </span>
     </div>
     <div class="tags">
-      <app-tags [foodPageTags]="food.tags" justifyContent="start" ]></app-tags>
+      <app-tags [foodPageTags]="food.tags" justifyContent="start" ></app-tags>
     </div>
     <div class="cook-time">
       <span>
